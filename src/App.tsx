@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { FcShipped } from "react-icons/fc";
 import './App.css'
 
 function App() {
@@ -9,12 +8,7 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <FcShipped size={84}/>
       </div>
       <h1>Vite + React + Github Pages</h1>
       <div className="card">
