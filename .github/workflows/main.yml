@@ -28,6 +28,7 @@ jobs:
               github_token: ${{ secrets.GITHUB_TOKEN }}
               publish_dir: dist
               publish_branch: gh-pages
+              destination_dir: PR-${{ github.event.pull_request.number }}
           - name: 🔗 Comment PR with Preview URL
             uses: thollander/actions-comment-pull-request@v3
             with:
