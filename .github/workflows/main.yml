@@ -17,10 +17,15 @@ jobs:
           - name: Install Dependencies
             run: npm install
           - name: Build Project
-            run: npm run build
+            run: |
+              REPO=${{ github.repository }}
+              REPO_NAME=${REPO##*/}
+              echo "Repo name: $REPO_NAME"
+              npm run build -- --base=/$REPO_NAME/PR-${{ github.event.pull_request.number }}/
           - name: Deploy to Github Pages
             uses: peaceiris/actions-gh-pages@v3
             with:
               github_token: ${{ secrets.GITHUB_TOKEN }}
-              publish_dir: ./dist
+              publish_dir: dist
               publish_branch: gh-pages
+              destination_dir: PR-${{github.event.pull_request.number}}
