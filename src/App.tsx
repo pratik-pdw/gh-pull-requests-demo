@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FcShop } from "react-icons/fc";
+import { FcShipped } from "react-icons/fc";
 import './App.css'
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div>
-        <FcShop size={84} />
+        <FcShipped size={84}/>
       </div>
       <h1>Vite + React + Github Pages</h1>
       <div className="card">
