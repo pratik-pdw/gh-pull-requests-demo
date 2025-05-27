@@ -10,7 +10,7 @@ function App() {
       <div>
         <FcShipped size={84}/>
       </div>
-      <h1>Vite + React + Github Pages</h1>
+      <h1>Github Pages</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           Click to increment: {count}
