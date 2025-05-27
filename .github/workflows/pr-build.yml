@@ -1,6 +1,6 @@
-name: Deploy Changes from Master
+name: Deploy PR Builds
 on:
-  push:
+  pull_request:
     branches:
       - main
 jobs:
@@ -21,12 +21,18 @@ jobs:
               REPO=${{ github.repository }}
               REPO_NAME=${REPO##*/}
               echo "Repo name: $REPO_NAME"
-              npm run build -- --base=/$REPO_NAME/
+              npm run build -- --base=/$REPO_NAME/PR-${{ github.event.pull_request.number }}/
           - name: 🚀 Deploy to Github Pages
             uses: JamesIves/github-pages-deploy-action@v4
             with:
               token: ${{ secrets.GITHUB_TOKEN }}
               folder: dist
               branch: gh-pages
-              clean-exclude: |
-                /PR-*
+              target-folder: PR-${{ github.event.pull_request.number }}
+          - name: 🔗 Comment PR with Preview URL
+            uses: thollander/actions-comment-pull-request@v3
+            with:
+              message: |
+                🔍 **PR Preview URL:**  
+                👉 [View Live Preview](https://pratik-pdw.github.io/gh-pull-requests-demo/PR-${{ github.event.pull_request.number }}/)
+              comment-tag: preview-url
