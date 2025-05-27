@@ -28,10 +28,11 @@ jobs:
               github_token: ${{ secrets.GITHUB_TOKEN }}
               publish_dir: dist
               publish_branch: gh-pages
+              destination_dir: PR-${{ github.event.pull_request.number }}
           - name: 🔗 Comment PR with Preview URL
             uses: thollander/actions-comment-pull-request@v3
             with:
               message: |
                 🔍 **PR Preview URL:**  
-                👉 [View Live Preview](https://pratik-pdw.github.io/gh-pull-requests-demo/pr-${{ github.event.pull_request.number }}/)
-              comment_tag: preview-url
+                👉 [View Live Preview](https://pratik-pdw.github.io/gh-pull-requests-demo/PR-${{ github.event.pull_request.number }}/)
+              comment-tag: preview-url
