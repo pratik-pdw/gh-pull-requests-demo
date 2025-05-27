@@ -28,5 +28,4 @@ jobs:
               token: ${{ secrets.GITHUB_TOKEN }}
               folder: dist
               branch: gh-pages
-              clean-exclude: |
-                /PR-*
+              
