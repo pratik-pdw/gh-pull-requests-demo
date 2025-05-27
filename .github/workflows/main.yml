@@ -34,4 +34,4 @@ jobs:
               message: |
                 🔍 **PR Preview URL:**  
                 👉 [View Live Preview](https://pratik-pdw.github.io/gh-pull-requests-demo/pr-${{ github.event.pull_request.number }}/)
-              comment_tag: preview-url
+              comment-tag: preview-url
