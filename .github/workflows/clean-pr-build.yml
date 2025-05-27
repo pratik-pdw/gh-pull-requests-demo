@@ -1,0 +1,22 @@
+name: Delete PR Preview Folder
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  delete-folder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: 🗑️ Remove Preview Folder
+        run: rm -rf PR-${{ github.event.pull_request.number }}
+
+      - name: ↗️ Commit and Push Changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "🧹 Remove PR preview folder for PR #${{ github.event.pull_request.number }}"
